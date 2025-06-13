@@ -65,7 +65,7 @@ class VMInterface(ProcessInterface):
 
     async def call_async(self, f, *args, **kwargs):
         """Run a blocking function in a thread as a coroutine."""
-        return await self.call_async(f, *args, **kwargs)
+        return await asyncio.to_thread(f, *args, **kwargs)
 
 
 class SchedulerMixin(object):
